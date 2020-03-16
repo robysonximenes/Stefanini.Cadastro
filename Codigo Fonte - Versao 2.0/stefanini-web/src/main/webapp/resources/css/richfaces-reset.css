@@ -1,0 +1,83 @@
+@CHARSET "ISO-8859-1";
+
+#header #menu-opcoes .rich-toolbar {
+	background: none repeat scroll 0 0 #DEEFDE !important;
+    border: 0 none !important;
+    width: 80%;	
+}
+
+#header #menu-opcoes .rich-menu-item, #header #menu-opcoes .rich-menu-group {
+    background: #deefde;
+}
+
+#header #menu-opcoes .rich-ddmenu-label-unselect {
+	color: #000000;
+}
+
+a.rf-ds-btn {
+	background: #DEEFDE;	
+}
+
+.sicredi-menu .rf-ddm-lst-bg {
+	background: none;	
+}
+
+.sicredi-menu .rf-ddm-lst {
+	background: #DEEFDE;	
+}
+
+.sicredi-menu .rf-ddm-itm-sel {
+	background: #0ebb04;	
+}
+
+.rf-msg-err, .rf-msgs-err, .rf-msg-ftl, .rf-msgs-ftl, .rf-msg-inf, 
+.rf-msgs-inf, .rf-msg-wrn, .rf-msgs-wrn, .rf-msg-ok, .rf-msgs-ok { 
+   margin-left: 20px;
+   padding-left: 20px;
+   color: #000 !important; 
+   text-align: left;
+   margin-top: 5px;
+   font-size: 1.2em;
+}
+
+.rf-msg-err, .rf-msgs-err{ background-image:none; }
+
+.rich-mpnl-shadow {
+	background: none !important;	
+}
+
+.rich-mpnl-header {
+	background: #DEEFDE;
+	border-color: #DEEFDE;
+}
+
+.rich-mpnl-text {
+	color: #000;
+}
+
+.rich-messages-marker {
+	margin: 0px 5px;
+	display: block;
+	float: left;
+}
+
+.rich-messages-label {
+	font-size: 1.2em;
+}
+
+.rich-messages dt {
+	margin-top: 5px;
+}
+
+.rich-sort-icon {
+	vertical-align: middle;
+	visibility: hidden;
+}
+
+.rich-table {
+	border-bottom: 1px solid #C0C0C0;	
+}
+
+.rich-table-cell {
+	border-top: 1px solid #C0C0C0;
+}

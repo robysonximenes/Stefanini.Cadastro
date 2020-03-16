@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
+              xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+
+	<!-- Fluxos Navegacao -->
+	
+    <navigation-rule>
+        
+        <navigation-case>
+            <from-outcome>desenvolvedor</from-outcome>
+            <to-view-id>/pagina/sobre/desenvolvedor.xhtml</to-view-id>
+			
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>sobreStefanini</from-outcome>
+            <to-view-id>/pagina/sobre/sobreStefanini.xhtml</to-view-id>
+			
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>cadastrarPessoa</from-outcome>
+            <to-view-id>/pagina/manutencao/cadastrarPessoa.xhtml</to-view-id>
+			
+        </navigation-case>
+	
+        <navigation-case>
+            <from-outcome>buscarPessoa</from-outcome>
+            <to-view-id>/pagina/consulta/buscarPessoa.xhtml</to-view-id>
+			
+        </navigation-case>
+		
+        <navigation-case>
+            <from-outcome>alterarPessoa</from-outcome>
+            <to-view-id>/pagina/manutencao/alterarPessoa.xhtml</to-view-id>
+			
+        </navigation-case>
+		
+        <navigation-case>
+            <from-outcome>excluirPessoa</from-outcome>
+            <to-view-id>/pagina/manutencao/excluirPessoa.xhtml</to-view-id>
+			
+        </navigation-case>		
+		
+        <navigation-case>
+            <from-outcome>editarCadastroPessoa</from-outcome>
+            <to-view-id>/pagina/manutencao/editarCadastroPessoa.xhtml</to-view-id>
+			
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>index</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+			
+        </navigation-case>
+
+    </navigation-rule>
+	
+	
+	<!-- /Fluxos Navegacao -->
+	
+	<!-- Internacionalizacao -->
+	
+    <application>
+        <locale-config>
+            <default-locale>pt_BR</default-locale>
+        </locale-config>
+		
+        <message-bundle>ApplicationResources</message-bundle>
+        <message-bundle>MessageBundle</message-bundle>
+        <message-bundle>ExceptionBundle</message-bundle>
+    </application>
+	
+</faces-config>

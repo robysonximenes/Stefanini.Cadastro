@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j">
+
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8; IE=EmulateIE7;" />
+        <title>
+            <h:outputText value="#{msg.nome_aplicacao} - " />
+        </title>
+
+        <link href="#{facesContext.externalContext.requestContextPath}/resources/css/estilo.css" rel="stylesheet" media="screen" />
+        <link href="#{facesContext.externalContext.requestContextPath}/resources/css/estilo-ximenes.css" rel="stylesheet" media="screen" />
+        <link href="#{facesContext.externalContext.requestContextPath}/resources/css/util.css" rel="stylesheet" media="screen" />
+        <link href="#{facesContext.externalContext.requestContextPath}/resources/css/richfaces-reset.css" rel="stylesheet" media="screen" />
+
+        <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/resources/js/scripts.js"/>
+        <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/resources/js/meio.mask.js"/>
+        <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/resources/js/jquery.maskedinput.js"></script>
+        <script type="text/javascript" src="#{facesContext.externalContext.requestContextPath}/resources/js/jquery.maskedinput-1.3.min.js"></script>
+
+
+        <link id="shortcut-icon-stefanini" rel="shortcut icon" 
+              href="#{facesContext.externalContext.requestContextPath}/resources/imagens/favicon1.ico" type="image/x-icon" />
+
+        <ui:insert name="include" />
+
+        <f:loadBundle basename="MessageBundle" var="msg" />
+
+    </head>
+    <body>
+        <f:view>
+            <h:form id="form-menu">
+                <rich:toolBar id="form-menu-toolbar">
+
+                    <rich:dropDownMenu disabled="#{controller.logado}">
+
+                        <f:facet name="label">
+                            <h:panelGroup>
+                                <h:outputText value="#{msg.str_menu}" />
+                            </h:panelGroup>								
+                        </f:facet>
+
+                        <rich:menuGroup value="#{msg.str_pessoa}" id="form-menu-cadastros">
+                            <rich:menuItem submitMode="ajax" value="#{msg.str_cadastros}" 
+                                           action="cadastrarPessoa" id="form-menu-item-cadastrar" >
+                            </rich:menuItem>
+                            <rich:menuItem submitMode="ajax" value="#{msg.str_pesquisar}" 
+                                           action="buscarPessoa" id="form-menu-item-buscar">
+                            </rich:menuItem>
+                            <rich:menuItem submitMode="ajax" value="#{msg.str_alterar}" 
+                                           action="buscarPessoa" id="form-menu-item-alterar">
+                            </rich:menuItem>
+                            <rich:menuItem submitMode="ajax" value="#{msg.str_excluir}" 
+                                           action="buscarPessoa" id="form-menu-item-excluir">
+                            </rich:menuItem>
+                        </rich:menuGroup>
+
+                    </rich:dropDownMenu>
+
+                    <rich:dropDownMenu disabled="#{controller.logado}">
+                        <f:facet name="label">
+                            <h:panelGroup>
+                                <h:outputText value="#{msg.str_sobre}" />
+                            </h:panelGroup>								
+                        </f:facet>
+                        <rich:menuItem submitMode="ajax" value="#{msg.str_a_stefanini}" 
+                                       action="#{controller.sobreStefanini}" id="form-menu-item-a-stefanini" />
+                        <rich:menuItem submitMode="ajax" value="#{msg.str_o_desenvolvedor}" 
+                                       action="#{controller.desenvolvedor}" id="form-menu-item-o-desenvolvedor" />
+                    </rich:dropDownMenu>
+
+                </rich:toolBar>
+       
+            </h:form>
+
+            <h:form id="form-login">
+                <h:panelGroup styleClass="grupo-box clearfix" id="conteudo-login" rendered="#{controller.logado}" layout="block" >
+                    <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                    <div class="clearfix margin-bottom data-table" align="center" >
+
+                        <h:outputLabel value="Login" style="font-size: 20px" class="data-table text-center" id="lbl-dados"/>
+                        <br></br><br></br><br></br>
+                        <div class="container-label-field largura-13">
+                            <h:outputLabel value="Usuário " id="lbl-nome" style="text-align: left"/>
+                            <h:inputText value="#{controller.nomeUsuario}" styleClass="full-width" />					
+                        </div>	
+                        <div class="container-label-field largura-13"> 
+                            <h:outputLabel value="Senha" id="lbl-cpf"/>
+                            <h:inputText value="#{controller.senhaUsuario}" maxlength="14" id="txt-senha" styleClass="full-width" />
+                        </div>	
+                        <div class="clearfix">
+                            <h:commandButton id="btn-limpar" value="Limpar"
+                                            action="#{controller.limpar}" styleClass="botao" />
+                            <a4j:commandButton id="btn-pesquisar" value="Logar"
+                                               action="#{controller.logar}" styleClass="botao margin-left" reRender="form-login, form-menu, form-menu-toolbar, form-menu-cadastros, conteudo-login" />	
+                        </div>
+                    </div>
+                </h:panelGroup>
+            </h:form>
+            
+            <div id="content">
+
+                <div id="content-stage">
+
+                    <div id="stage">
+
+                        <div class="full-width espacamento-menu-conteudo" align="center">
+                            <div class="espacamento-botao">
+                                <ui:insert name="botao-voltar-fechar"/>
+                            </div>
+                            <div>
+                                <ui:insert name="titulo-pagina"/>
+                            </div>
+                        </div>
+
+                        <ui:insert name="conteudo-pagina"/>
+
+                    </div><!-- div#stage -->
+
+                </div><!-- div#content-stage -->
+
+            </div><!--  div#stage -->
+
+            <div id="footer">
+
+                <div id="border-footer-left" class="border-footer"></div>
+                <div id="border-footer-right" class="border-footer"></div>
+
+            </div><!-- div#footer -->
+            
+            <h:form>
+			<a4j:outputPanel ajaxRendered="true" id="container-popup">
+				
+				<rich:modalPanel showWhenRendered="#{!empty facesContext.maximumSeverity}" 
+					id="popup-aviso" moveable="true" resizeable="false" height="150" width="400" autosized="true">
+					
+					<f:facet name="header">
+						<h:outputText value="#{msg.str_atencao}" />
+					</f:facet>
+					
+					<f:facet name="controls">
+						<h:graphicImage value="/resources/imagens/close.png" onclick="#{rich:component('popup-aviso')}.hide()" style="cursor:pointer" />
+					</f:facet>
+					
+					<rich:messages styleClass="text-left">
+						
+						<f:facet name="infoMarker">
+	                        <h:graphicImage value="/resources/imagens/info.png"  /> 
+	                    </f:facet>
+						
+						<f:facet name="errorMarker">
+	                        <h:graphicImage value="/resources/imagens/error.png"  /> 
+	                    </f:facet>
+						
+						<f:facet name="fatalMarker">
+	                        <h:graphicImage value="/resources/imagens/fatal.png"  /> 
+	                    </f:facet>
+						
+						<f:facet name="passedMarker">
+	                        <h:graphicImage value="/resources/imagens/success.png"  /> 
+	                    </f:facet>
+						
+					</rich:messages>
+                                    <br></br><br></br>
+					<div class="text-center margin-top">
+						<a4j:commandButton value="#{msg.fechar}" id="btn-fechar" styleClass="botao">
+							<rich:componentControl operation="hide" for="popup-aviso" attachTo="btn-fechar" event="onclick" />
+						</a4j:commandButton>
+					</div>
+					
+				</rich:modalPanel>
+			
+				
+			</a4j:outputPanel>		
+			</h:form>
+
+            <a4j:status startStyleClass="loading">
+                <f:facet name="start">
+                    <h:graphicImage value="/resources/imagens/aguarde.gif" />
+                </f:facet>
+            </a4j:status>
+
+        </f:view>
+    </body>
+
+
+</html>

@@ -1,0 +1,88 @@
+@CHARSET "ISO-8859-1";
+
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+html[xmlns] .clearfix {
+	display: block;
+}
+
+* html .clearfix {
+	height: 1%;
+}
+
+.full-width {
+	width: 100%;	
+}
+
+.width-90 {
+	width: 90%;
+}
+
+.text-center {
+	text-align: center;
+	/*display: block;*/	
+}
+
+.text-right {
+	text-align: right;
+	/*display: block;*/	
+}
+
+.text-left {
+	text-align: left;
+	/*display: block;*/	
+}
+
+.auto {
+	display:block;
+	margin:10px auto;	
+}
+
+.margin-top {
+	margin-top:10px;	
+}
+
+.espacamento-menu-conteudo {
+	margin-top: -25px;
+}
+
+.espacamento-botao {
+	position: absolute;
+	right: 15px;	
+}
+
+.sem-borda {
+	border-style: none;	
+	vertical-align: middle;
+}
+
+.texto-maiusculo {
+	text-transform: uppercase;
+}
+
+.background-verde {
+	background: #E2F6E2;	
+}
+
+.txt-direita-para-esquerda {
+	text-align: right;
+}
