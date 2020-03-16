@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"testemongodb.pessoa"}],"uuid":"1d1e9160107a48ac83d014bf361f4373"}
