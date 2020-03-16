@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j" template="/template/chassi.xhtml">
+
+	
+    
+    <ui:define name="titulo-pagina">
+        <h:form id="form-titulo">
+            <br/><br/>
+            <h3 id="lbl-titulo_pesquisar_pessoas" style="font-size: 20px"
+                class="data-table text-center">#{msg.str_titulo_editar_cadastro_pessoa}</h3>
+        </h:form>
+    </ui:define>
+    	
+    <ui:define name="botao-voltar-fechar">
+        <h:form id="form-fechar">
+            <br/><br/>
+            <a4j:commandButton id="btn-fechar" value="#{msg.fechar}" styleClass="botao" action="index" />
+        </h:form>	
+    </ui:define>    
+	
+	<ui:define name="conteudo-pagina">
+		
+        <h:form id="form-dados-pessoa">
+            
+        <h:panelGroup id="panel-grupo-dados">
+         <h:panelGrid columns="2" id="panel-grid-dados">
+            <h:outputLabel value="NOME:" for="nome" />
+            <h:inputText id="nome" label="nome" value="#{EditarCadastroPessoaMB.nome}" maxlength="25" size="40"  />                    
+ 
+            <h:outputLabel value="CPF:" for="cpf"/>
+            <h:inputText id="cpf" label="cpf" value="#{EditarCadastroPessoaMB.cpf}" maxlength="14" size="40" onkeypress="return mascaraExpress(this,cpf);"  />
+            
+            <h:outputLabel id="lbl-status" value="SEXO:" styleClass="label-form" for="select-sexo" />
+            <h:selectOneMenu id="select-sexo"
+                    value="#{EditarCadastroPessoaMB.sexo}"
+                    styleClass="full-width">
+                    <f:selectItem itemLabel="" itemValue="" />
+                    <f:selectItem itemLabel="#{msg.str_masculino}" itemValue="M" />
+                    <f:selectItem itemLabel="#{msg.str_feminino}" itemValue="F" />
+            </h:selectOneMenu>
+            
+            <h:outputLabel value="EMAIL:" for="email" />
+            <h:inputText id="email" label="email" value="#{EditarCadastroPessoaMB.email}" maxlength="25" size="40"  /> 
+            
+            <h:outputLabel value="DATA NASCIMENTO:" for="dataNascimento" />
+            <h:inputText id="dataNascimento" label="dataNascimento" value="#{EditarCadastroPessoaMB.dtNascimento}" maxlength="14" size="40"  />
+            
+            <h:outputLabel value="NATURALIDADE:" for="naturalidade" />
+            <h:inputText id="naturalidade" label="naturalidade" value="#{EditarCadastroPessoaMB.naturalidade}" maxlength="14" size="40"  />
+ 
+            <h:outputLabel value="NACIONALIDADE:" for="nacionalidade" />
+            <h:inputText id="nacionalidade" label="nacionalidade" value="#{EditarCadastroPessoaMB.nacionalidade}" maxlength="14" size="40"  />
+            
+            </h:panelGrid>
+            
+        </h:panelGroup>
+
+			<h:panelGroup id="container-botoes-edicao" class="data-table" layout="block">
+
+				<div class="clearfix">
+
+					<h:commandButton id="btn-limpar" value="#{msg.str_limpar}"
+						action="#{EditarCadastroPessoaMB.limpar}"
+                                                style="margin:10px auto; margin-left: 7px;"
+						styleClass="botao margin-left" />
+
+					<a4j:commandButton id="btn-salvar" value="#{msg.str_salvar}"
+						action="#{EditarCadastroPessoaMB.salvarPessoa}"
+                                                style="margin:10px auto; margin-left: 25%;"
+						styleClass="botao float-left"
+                                                reRender="form-dados-pessoa, panel-grupo-dados, panel-grid-dados"/>
+				</div>
+
+			</h:panelGroup>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

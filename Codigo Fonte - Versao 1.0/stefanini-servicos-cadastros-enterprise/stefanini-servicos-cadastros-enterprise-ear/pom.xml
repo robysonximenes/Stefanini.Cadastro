@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>stefanini-servicos-cadastros-enterprise</artifactId>
+    <groupId>br.com.stefanini.servicos.cadastros.enterprise</groupId>
+    <version>1.0.0.0-SNAPSHOT</version>
+  </parent>
+
+  <groupId>br.com.stefanini.servicos.cadastros.enterprise</groupId>
+  <artifactId>stefanini-servicos-cadastros-enterprise-ear</artifactId>
+  <version>1.0.0.0-SNAPSHOT</version>
+  <packaging>ear</packaging>
+
+<build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+            <encoding>${project.build.sourceEncoding}</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-ear-plugin</artifactId>
+        <configuration>
+            <defaultLibBundleDir>lib</defaultLibBundleDir>
+            <version>5</version>
+        </configuration>
+      </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <configuration>
+                <encoding>${project.build.sourceEncoding}</encoding>
+            </configuration>
+        </plugin>
+    </plugins>
+    <finalName>stefanini-servicos-cadastros-enterprise-ear</finalName>
+  </build>
+    <dependencies>
+        <dependency>
+            <groupId>br.com.stefanini.servicos.cadastros.enterprise</groupId>
+            <artifactId>stefanini-servicos-cadastros-enterprise-ejb</artifactId>
+            <version>${project.version}</version>
+            <type>ejb</type>
+        </dependency>
+    </dependencies>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <netbeans.hint.deploy.server>WebLogic9</netbeans.hint.deploy.server>
+    </properties>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <configuration>
+                    <configLocation>config/sun_checks.xml</configLocation>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>

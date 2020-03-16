@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:a4j="http://richfaces.org/a4j" 
+                template="/template/chassi.xhtml">
+
+    <ui:define name="titulo-pagina">
+        <h:form id="form-titulo">
+            <br/><br/>
+            <h3 id="lbl-desenvolvedor-sistema" style="font-size: 20px"
+                class="data-table text-center">#{msg.nome_aplicacao}</h3>
+        </h:form>
+    </ui:define>
+
+    <ui:define name="botao-voltar-fechar">
+        <h:form id="form-fechar">
+            <br/><br/>
+            <a4j:commandButton id="btn-fechar" value="Fechar" styleClass="botao" action="index" />
+        </h:form>	
+    </ui:define>
+
+    <ui:define name="include">
+        <script type="text/javascript">
+            jQuery(document).ready(function(){
+                document.getElementById('form-altera-divulgacao:btn-desabilitar').disabled = true;
+                document.getElementById('form-altera-divulgacao:btn-habilitar').disabled = true;
+            });
+        </script>
+    </ui:define>
+
+    <ui:define name="conteudo-pagina">
+
+        <h:form>
+            <div>
+                <h1 style="font-size: 25px">A demanda</h1>
+                <p class="lead">Deverá ser criada uma aplicação de cadastro de pessoas:</p>
+                
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <h2>1. Back-end</h2>
+                    <p>
+                        A aplicação, a ser desenvolvida em Java, deverá expor uma API Rest de
+                        cadastro, alteração, remoção e consulta de pessoas com as seguintes
+                        informações.:<br></br>
+                         Nome - obrigatório<br></br>
+                         Sexo<br></br>
+                         E-mail - não obrigatório, deve ser validado caso preenchido<br></br>
+                         Data de Nascimento - obrigatório, deve ser validada<br></br>
+                         Naturalidade<br></br>
+                         Nacionalidade<br></br>
+                         CPF - obrigatório, deve ser validado (formato e não pode haver dois
+                        cadastros com mesmo CPF)<br></br>
+                        Obs: a data de cadastro e atualização dos dados devem ser armazenados.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h2>2. Front-end</h2>
+                    <p>
+                        A aplicação deverá ser acessível via navegador e possuir uma tela com
+                        formulário. Não há restrição em relação à tecnologia para o
+                        desenvolvimento do front-end.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h2>3. Segurança</h2>
+                    <p>
+                        O acesso à aplicação só poderá ser realizado por um usuário pré-existente
+                        via autenticação **basic**. 
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h2>4. Instalação</h2>
+                    <p>
+                        Um manual com as instruções de instalação do projeto deve ser produzido.
+                        O mesmo ainda deve conter os endpoints disponíveis para consumo. 
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h2>5. Código fonte</h2>
+                    <p>
+                        A aplicação deverá estar disponível no github com o código fonte do
+                        projeto desenvolvido.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h2>Extras</h2>
+                    <p>
+                        1. Implementar testes automatizados com JUNIT e garantir 80% de
+                        cobertura de código.<br></br>
+                        2. Fornecer projeto no SOAPUI ou no Postman com exemplos de request
+                        para cada endpoint implementado.<br></br>
+                        3. Implementar utilizando MongoDB ou outro banco de dados NoSQL.<br></br>
+                        4. Versão 2 da API que deve incluir endereço da pessoa como dado
+                        obrigatório. Versão 1 deve continuar funcionando.<br></br>
+                        5. A aplicação rodando em algum ambiente em nuvem
+                    </p>
+                </div>
+            </div>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
+

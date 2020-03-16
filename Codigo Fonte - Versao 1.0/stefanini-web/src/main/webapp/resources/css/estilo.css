@@ -1,0 +1,233 @@
+@CHARSET "ISO-8859-1";
+
+/*Atribuicoes Principais*/
+
+html, body {
+	font-family: "Verdana", Geneva, Arial, Helvetica;
+	border:0;
+	margin:auto;
+	padding:0;
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	background: url("/stefanini-web/resources/imagens/bg.jpg") repeat-x scroll center top transparent;
+	font-size: 0.8em;
+}
+
+#wrapper {
+	background:#f4f4f4;
+	margin:0 auto;
+	max-width:98%;
+	min-width:775px;
+	min-height: 99%;
+	position: relative;
+}
+
+#header {
+	/*background: url("../imagens/fundo-banner.jpg") no-repeat scroll left top #0B9003;*/
+}
+
+#content {
+	padding:15px;	
+}
+
+#footer {
+	background: url("/stefanini-web/resources/imagens/bg-rodape.jpg") repeat-x scroll center bottom transparent;
+	height: 10px;
+	bottom: 0;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:HOVER {
+	text-decoration: underline;	
+}
+
+h1, h2, h3, h4, h5 {
+	color:#E46C0A;
+	margin:0;
+	margin-bottom: 5px;	
+}
+
+h2 {
+	font-size: 1.4em;	
+}	
+
+/* Header */
+
+/*#header #logotipo {
+	width: 150px;
+	height: 100px;
+	background: url("../imagens/logo.gif") no-repeat scroll left top transparent;
+	position: relative;
+	z-index: 1;
+}*/
+
+#header #login-info {
+	color: #FFFFFF;
+	position: absolute;
+	right: 10px;
+	top: 10px;	
+}
+
+#header #login-info span {
+	border-right: 1px solid #fff;
+	padding-right: 5px;
+}
+
+#header #login-info a {
+	color: #FFFFFF;
+}
+
+#header #menu-opcoes {
+	height: auto;
+	background: #DEEFDE;
+	/*border: 1px solid #CFCFCF;*/
+}
+
+#content #botao-voltar {
+	height: 25px;
+}
+
+#content #navigation-panel {
+	margin-bottom:10px;	
+}
+
+#content #content-stage {
+	
+}
+
+#content #content-stage #stage {
+	margin: 10px 0;
+}
+
+#footer #border-footer-left {
+	background: url("/stefanini-web/resources/imagens/baixo-rodape-esq.jpg") no-repeat scroll left top transparent;
+	left:0; 	
+}
+
+#footer #border-footer-right {
+	background: url("/stefanini-web/resources/imagens/baixo-rodape-dir.jpg") no-repeat scroll right top transparent;
+	right:0; 	
+}
+
+.loading {
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999999;
+    background: #ededed;
+    opacity: 0.7;
+	-mox-opacity: 0.7;
+	filter: alpha(opacity=70);
+}
+
+.loading img {
+    top: 50%;
+    left: 50%;
+    position: relative;		
+}
+
+tr{
+	margin-bottom: 5px;	
+}
+
+.rich-modalpanel .rich-mpnl-header {
+	background: #DEEFDE;
+	padding: 5px;
+}
+
+.rich-modalpanel .rich-mpnl-controls {
+	margin:3px;
+}
+
+
+.visivel{
+	display: inline;	
+}
+
+.invisivel{
+	display: none;	
+}
+
+.min-input-calendar {
+	width: 100px;
+}
+
+div.scrollTable {
+	background: transparent;
+	border: 1px solid #C0C0C0;
+}
+
+div.scrollTable table.header, div.scrollTable div.scroller table {
+	border-collapse: collapse;
+}
+
+div.scrollTable table.header th, div.scrollTable div.scroller table td{
+	border-bottom: 1px solid #C0C0C0;
+	border-right: 1px solid #C0C0C0;
+	background: #FFFFFF;	
+}
+
+div.scrollTable table.header th {
+	background-color: #E2F6E2;
+}
+
+div.scrollTable div.scroller {
+	height: 200px;
+	overflow: auto;
+}
+
+div.scrollTable .coluna50px {
+	width: 50px;
+}
+
+div.scrollTable .coluna225px {
+	width: 225px;
+}
+
+div.scrollTable .coluna30px {
+	width: 30px;
+}
+
+div.scrollTable .coluna331px {
+	width: 331px;
+}
+
+div.scrollTable .coluna100px {
+	width: 100px;
+}
+
+div.scrollTable .coluna52px {
+	width: 52px;
+}
+
+div.scrollTable .coluna227px {
+	width: 227px;
+}
+
+div.scrollTable .coluna32px {
+	width: 32px;
+}
+
+div.scrollTable .coluna333px {
+	width: 333px;
+}
+
+div.scrollTable .coluna102px {
+	width: 102px;
+}
+
+div.scrollTable table th {
+	border-right: 1px solid #C0C0C0;
+	border-bottom: 1px solid #C0C0C0;	
+}

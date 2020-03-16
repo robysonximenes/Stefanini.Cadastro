@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:a4j="http://richfaces.org/a4j" 
+                template="/template/chassi.xhtml">
+
+    <ui:define name="titulo-pagina">
+        <h:form id="form-titulo">
+            <br/><br/>
+            <h3 id="lbl-titulo_pesquisar_pessoas" style="font-size: 20px"
+                class="data-table text-center">#{msg.str_titulo_pesquisar_pessoa}</h3>
+        </h:form>
+    </ui:define>
+
+    <ui:define name="botao-voltar-fechar">
+        <h:form id="form-fechar">
+            <br/><br/>
+            <a4j:commandButton id="btn-fechar" value="Fechar" styleClass="botao" action="index" />
+        </h:form>	
+    </ui:define>
+
+    <ui:define name="conteudo-pagina">
+
+        <h:form id="form-pesquisa">
+            <fieldset class="container-fieldset">
+                <h:panelGroup styleClass="grupo-box clearfix" id="conteudo-pesquisa" layout="block">
+
+                    <div class="clearfix margin-bottom data-table">
+
+                        <div class="container-label-field largura-100 float-left">
+                            <h:outputLabel value="Filtro de Pesquisa" style="width:87px; width: 220px;" styleClass="float-left" id="lbl-dados"/>
+                        </div>
+                        <div class="container-label-field largura-25 float-left">
+                            <h:outputLabel value="Nome " styleClass="float-left" id="lbl-nome"/>
+                            <h:inputText value="#{BuscarPessoaMB.nomeEntrada}" styleClass="full-width" />					
+                        </div>	
+                        <div class="container-label-field largura-13 float-left margin-left"> 
+                            <h:outputLabel value="CPF" styleClass="float-left" id="lbl-cpf"/>
+                            <h:inputText value="#{BuscarPessoaMB.cpfEntrada}" maxlength="14" onkeypress="return mascaraExpress(this,cpf);" id="txt-cpf"
+                                         styleClass="full-width" >
+                                <!--f:convertNumber type="number" /-->
+                            </h:inputText>
+                        </div>	
+                    </div>
+                </h:panelGroup>
+            </fieldset>
+            <h:panelGroup id="container-botoes-edicao" class="data-table" layout="block">
+
+                <div class="clearfix">
+                    <h:commandButton id="btn-limpar" value="Limpar"
+                                     action="#{BuscarPessoaMB.limpar}" styleClass="botao float-right margin-left" />
+                    <a4j:commandButton id="btn-pesquisar" value="Pesquisar"
+                                       action="#{BuscarPessoaMB.pesquisar}" styleClass="botao float-right" reRender="container-listagem, conteudo-pesquisa, tbl-pessoas, qtd-encontrados" />	
+                </div>	
+
+            </h:panelGroup>
+        </h:form>
+        <h:form id="form-altera-divulgacao">
+            <h:panelGroup id="container-listagem" layout="block">
+
+                <div class="clearfix data-table">
+                    <div class="float-left" >
+                        <h:outputText id="qtd-encontrados" value="#{BuscarPessoaMB.qtd eq null ? 0 : BuscarPessoaMB.qtd}" />
+                        <h:outputText value=" #{msg.str_registros_encontrados}" />
+                    </div>
+                </div>
+
+                <rich:dataTable id="tbl-pessoas" 
+                                value="#{BuscarPessoaMB.listPessoaModal}" 
+                                rows="15"
+                                var="resultado"  styleClass="full-width data-table"
+                                sortPriority="#{BuscarPessoaMB.prioridadeOrdenacaoTabela}">
+
+                    <rich:column styleClass="text-center">
+                        <f:facet name="header" >
+                            <h:outputLabel id="selecionar" value="Editar" />
+                        </f:facet>
+                        <h:commandLink immediate="true" action="#{BuscarPessoaMB.editar}" title="editar" id="bt_editar" >
+                            <h:graphicImage library="imagens" name="icon_detalhar.gif" alt="editar"/>    
+                        </h:commandLink>
+                    </rich:column>
+                    
+                    <rich:column styleClass="text-left" style="width:120px"
+                                 id="coluna-cpf"
+                                 sortBy="#{resultado.cpf}"
+                                 sortOrder="ASCENDING"
+                                 selfSorted="false">
+                        <f:facet name="header">
+                            <h:outputLabel id="lbl-cpf" value="#{msg.str_cpf}" />
+                        </f:facet>
+                        <h:outputText value="#{resultado.cpf}" />
+                    </rich:column>
+
+                    <rich:column styleClass="text-left"
+                                 id="coluna-nome"
+                                 sortBy="#{resultado.nome}"
+                                 sortOrder="ASCENDING"
+                                 selfSorted="false">
+                        <f:facet name="header">
+                            <h:outputLabel id="lbl-nome" value="#{msg.str_nome}" />
+                        </f:facet>
+                        <h:outputText value="#{resultado.nome}" />
+                    </rich:column>
+
+                    <rich:column styleClass="text-left"
+                                 id="coluna-dtNascimento">
+                        <f:facet name="header">
+                            <h:outputLabel id="lbl-data-nascimento" value="#{msg.str_data_nascimento}" />
+                        </f:facet>
+                        <h:outputText value="#{resultado.dtNascimento}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+                    </rich:column>
+
+                    <rich:column styleClass="text-left"
+                                 id="coluna-sexo">
+                        <f:facet name="header">
+                            <h:outputLabel id="lbl-sexo" value="#{msg.str_sexo}" />
+                        </f:facet>
+                        <h:outputText value="#{resultado.sexo}" />
+                    </rich:column>
+
+                    <rich:column styleClass="text-center"
+                                 id="coluna-email">
+                        <f:facet name="header">
+                            <h:outputLabel id="lbl-email" value="#{msg.str_email}" />
+                        </f:facet>
+                        <h:outputText value="#{resultado.email}">
+                        </h:outputText>
+                    </rich:column>
+
+                    <rich:column styleClass="text-center"
+                                 id="coluna-dtCadastr">
+                        <f:facet name="header">
+                            <h:outputLabel id="lbl-dtCadastro" value="#{msg.str_dtCadastro}" />
+                        </f:facet>
+                        <h:outputText value="#{resultado.dtCadastro}">
+                        </h:outputText>
+                    </rich:column>
+
+                    <rich:column styleClass="text-center"
+                                 id="coluna-dtAtualizacaoCadastro">
+                        <f:facet name="header">
+                            <h:outputLabel id="lbl-dtAtualizacao" value="#{msg.str_dtAtualizacao}" />
+                        </f:facet>
+                        <h:outputText value="#{resultado.dtAtualizacaoCadastro}">
+                        </h:outputText>
+                    </rich:column>
+                    
+                    <rich:column styleClass="text-center"
+                                 id="coluna-nacionalidade">
+                        <f:facet name="header">
+                            <h:outputLabel id="lbl-nacionalidade" value="#{msg.str_nacionalidade}" />
+                        </f:facet>
+                        <h:outputText value="#{resultado.nacionalidade}">
+                        </h:outputText>
+                    </rich:column>
+                    
+                    <rich:column styleClass="text-center"
+                                 id="coluna-naturalidade">
+                        <f:facet name="header">
+                            <h:outputLabel id="lbl-naturalidade" value="#{msg.str_naturalidade}" />
+                        </f:facet>
+                        <h:outputText value="#{resultado.naturalidade}">
+                        </h:outputText>
+                    </rich:column>
+                    
+                    <rich:column styleClass="text-center">
+                        <f:facet name="header" >
+                            <h:outputLabel id="lbl-excluir" value="Excluir" />
+                        </f:facet>
+                        
+                        <h:commandLink immediate="true" action="#{BuscarPessoaMB.deletar}" title="Cancelar" id="bt_cancelar" >
+                            <h:graphicImage library="imagens" name="error.png" alt="Cancelar"/>    
+                        </h:commandLink>
+                        
+                    </rich:column>
+                </rich:dataTable>
+            </h:panelGroup>
+
+            
+        </h:form>
+    </ui:define>
+
+</ui:composition>
