@@ -1,0 +1,305 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<name>stefanini-web-acesso</name>
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.com.stefanini.web</groupId>
+	<artifactId>stefanini-web-acesso</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0.0.0</version>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.sun.el</groupId>
+			<artifactId>el-ri</artifactId>
+			<version>1.0</version>
+		</dependency>
+ 
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>el-api</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>2.0.3-20100630</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>2.0.3-20100630</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.facelets</groupId>
+			<artifactId>jsf-facelets</artifactId>
+			<version>1.1.15.B1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+		</dependency>
+
+		<!-- Richfaces -->
+		
+		<dependency>
+			<groupId>org.richfaces.framework</groupId>
+			<artifactId>richfaces-impl-jsf2</artifactId>
+			<version>3.3.3.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.richfaces.ui</groupId>
+			<artifactId>richfaces-ui</artifactId>
+			<version>3.3.3.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.richfaces.framework</groupId>
+			<artifactId>richfaces-impl</artifactId>
+			<version>3.3.3.Final</version>
+		</dependency>
+	
+		<!-- JSF 2.0 -->
+
+		<dependency>
+			<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+			<version>1.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.8.3</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>1.0.0.GA</version>
+        </dependency>
+        
+        <dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.2.0.Final</version>
+		</dependency>
+		
+		<!-- Jaxws -->
+		<dependency>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-rt</artifactId>
+			<version>2.2.3</version>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>com.sun.xml.messaging.saaj</groupId>
+					<artifactId>saaj-impl</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		
+		<resources>
+			<resource>
+				<targetPath>META-INF</targetPath>
+				<directory>src/main/java</directory>
+				<includes />
+			</resource>
+			<resource>
+				<targetPath>META-INF</targetPath>
+				<directory>src/main/stub</directory>
+				<includes />
+			</resource>
+		 <resource>
+		  <targetPath>META-INF</targetPath>
+		  <directory>src</directory>
+		  <includes>
+		   <include>jax-ws-catalog.xml</include>
+		   <include>wsdl/**</include>
+		  </includes>
+		 </resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+		 <plugin>
+		  <groupId>org.codehaus.mojo</groupId>
+		  <artifactId>jaxws-maven-plugin</artifactId>
+		  <version>1.10</version>
+		  <executions>
+		   <execution>
+		    <goals>
+		     <goal>wsimport</goal>
+		    </goals>
+		    <configuration>
+		     <wsdlFiles>
+		      <wsdlFile>localhost_7001/CadastroService/CadastroService.wsdl</wsdlFile>
+		     </wsdlFiles>
+		     <wsdlLocation>http://localhost:7001/CadastroService/CadastroService?WSDL</wsdlLocation>
+		     <staleFile>${project.build.directory}/jaxws/stale/CadastroService.stale</staleFile>
+		    </configuration>
+		    <id>wsimport-generate-CadastroService</id>
+		    <phase>generate-sources</phase>
+		   </execution>
+		  </executions>
+		  <dependencies>
+		   <dependency>
+		    <groupId>javax.xml</groupId>
+		    <artifactId>webservices-api</artifactId>
+		    <version>1.4</version>
+		   </dependency>
+		  </dependencies>
+		  <configuration>
+		   <sourceDestDir>${project.build.directory}/generated-sources/jaxws-wsimport</sourceDestDir>
+		   <xnocompile>true</xnocompile>
+		   <verbose>true</verbose>
+		   <extension>true</extension>
+		   <catalog>${basedir}/src/jax-ws-catalog.xml</catalog>
+		  </configuration>
+		 </plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>sso-dev</id>
+
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-eclipse-plugin</artifactId>
+						<version>2.8</version>
+						<configuration>
+							<source>1.6</source>
+							<target>1.6</target>
+							<encoding>UTF-8</encoding>
+							<debug>true</debug>
+							<optimize>true</optimize>
+							<additionalBuildcommands>
+								<buildCommand>
+									<name>org.eclipse.wst.common.project.facet.core.builder</name>
+								</buildCommand>
+								<buildCommand>
+									<name>org.eclipse.wst.validation.validationbuilder</name>
+								</buildCommand>
+								<buildCommand>
+									<name>org.maven.ide.eclipse.maven2Builder</name>
+								</buildCommand>
+								<buildCommand>
+									<name>net.sourceforge.pmd.runtime.pmdBuilder</name>
+								</buildCommand>
+								<buildCommand>
+									<name>com.atlassw.tools.eclipse.checkstyle.CheckstyleBuilder</name>
+								</buildCommand>
+							</additionalBuildcommands>
+							<additionalProjectnatures>
+								<projectnature>org.maven.ide.eclipse.maven2Nature</projectnature>
+								<projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
+								<projectnature>org.eclipse.wst.common.modulecore.ModuleCoreNature</projectnature>
+								<projectnature>org.eclipse.jem.workbench.JavaEMFNature</projectnature>
+								<projectnature>net.sourceforge.pmd.runtime.pmdNature</projectnature>
+								<projectnature>com.atlassw.tools.eclipse.checkstyle.CheckstyleNature</projectnature>
+							</additionalProjectnatures>
+						</configuration>
+					</plugin>
+
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>jaxws-maven-plugin</artifactId>
+						<version>1.10</version>
+
+						<executions>
+							<execution>
+							<id>Geral</id>
+								<goals>
+									<goal>wsimport</goal>
+								</goals>
+								<configuration>
+									<sourceDestDir>${project.basedir}/src/main/stub</sourceDestDir>
+										<bindingFiles> 
+											<bindingFile>${project.basedir}/jaxb.xml</bindingFile> 
+										</bindingFiles> 
+										
+									<verbose>true</verbose>
+										
+									<wsdlUrls>
+										<!-- ########################################EXTERNOS###################################### -->
+									</wsdlUrls>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+				</plugins>
+				<finalName>stefanini-web-acesso</finalName>
+			</build>
+
+		</profile>
+
+		<profile>
+			<id>sso-full</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+		</profile>
+
+	</profiles>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+</project>

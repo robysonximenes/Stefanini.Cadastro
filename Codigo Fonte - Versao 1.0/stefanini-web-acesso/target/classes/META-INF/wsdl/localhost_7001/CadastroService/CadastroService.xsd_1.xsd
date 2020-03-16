@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Oracle JAX-WS 2.1.5. --><xs:schema xmlns:tns="http://cadastro.ejb.enterprise.cadastros.servicos.stefanini.com.br/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://cadastro.ejb.enterprise.cadastros.servicos.stefanini.com.br/">
+
+<xs:element name="atualizarPessoa" type="tns:atualizarPessoa"/>
+
+<xs:element name="atualizarPessoaResponse" type="tns:atualizarPessoaResponse"/>
+
+<xs:element name="autenticarFuncionario" type="tns:autenticarFuncionario"/>
+
+<xs:element name="autenticarFuncionarioResponse" type="tns:autenticarFuncionarioResponse"/>
+
+<xs:element name="buscarListPessoas" type="tns:buscarListPessoas"/>
+
+<xs:element name="buscarListPessoasResponse" type="tns:buscarListPessoasResponse"/>
+
+<xs:element name="cadastrarPessoa" type="tns:cadastrarPessoa"/>
+
+<xs:element name="cadastrarPessoaResponse" type="tns:cadastrarPessoaResponse"/>
+
+<xs:element name="excluirPessoa" type="tns:excluirPessoa"/>
+
+<xs:element name="excluirPessoaResponse" type="tns:excluirPessoaResponse"/>
+
+<xs:complexType name="autenticarFuncionario">
+<xs:sequence>
+<xs:element name="inAutenticarFuncionario" type="tns:inAutenticarFuncionario" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="inAutenticarFuncionario">
+<xs:sequence>
+<xs:element name="funcionario" type="tns:funcionario" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="funcionario">
+<xs:sequence>
+<xs:element name="habilitado" type="xs:boolean" minOccurs="0"/>
+<xs:element name="nome" type="xs:string" minOccurs="0"/>
+<xs:element name="senha" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="autenticarFuncionarioResponse">
+<xs:sequence>
+<xs:element name="outAutenticarFuncionario" type="tns:outAutenticarFuncionario" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="outAutenticarFuncionario">
+<xs:sequence>
+<xs:element name="funcionario" type="tns:funcionario" minOccurs="0"/>
+<xs:element name="status" type="tns:status" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="status">
+<xs:sequence>
+<xs:element name="codigo" type="xs:string" minOccurs="0"/>
+<xs:element name="mensagem" type="xs:string" minOccurs="0"/>
+<xs:element name="tipo" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cadastrarPessoa">
+<xs:sequence>
+<xs:element name="inCadastrarPessoa" type="tns:inCadastrarPessoa" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="inCadastrarPessoa">
+<xs:sequence>
+<xs:element name="pessoa" type="tns:pessoa" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="pessoa">
+<xs:sequence>
+<xs:element name="cpf" type="xs:string" minOccurs="0"/>
+<xs:element name="dtAtualizacaoCadastro" type="xs:string" minOccurs="0"/>
+<xs:element name="dtCadastro" type="xs:string" minOccurs="0"/>
+<xs:element name="dtNascimento" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="idPessoa" type="xs:string" minOccurs="0"/>
+<xs:element name="nacionalidade" type="xs:string" minOccurs="0"/>
+<xs:element name="naturalidade" type="xs:string" minOccurs="0"/>
+<xs:element name="nome" type="xs:string" minOccurs="0"/>
+<xs:element name="sexo" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cadastrarPessoaResponse">
+<xs:sequence>
+<xs:element name="outCadastrarPessoa" type="tns:outCadastrarPessoa" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="outCadastrarPessoa">
+<xs:sequence>
+<xs:element name="status" type="tns:status" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="excluirPessoa">
+<xs:sequence>
+<xs:element name="inExcluirPessoa" type="tns:inExcluirPessoa" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="inExcluirPessoa">
+<xs:sequence>
+<xs:element name="cpf" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="excluirPessoaResponse">
+<xs:sequence>
+<xs:element name="outExcluirPessoa" type="tns:outExcluirPessoa" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="outExcluirPessoa">
+<xs:sequence>
+<xs:element name="status" type="tns:status" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="buscarListPessoas">
+<xs:sequence>
+<xs:element name="inBuscarPessoa" type="tns:inBuscarPessoa" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="inBuscarPessoa">
+<xs:sequence>
+<xs:element name="cpf" type="xs:string" minOccurs="0"/>
+<xs:element name="nome" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="buscarListPessoasResponse">
+<xs:sequence>
+<xs:element name="outBuscarPessoa" type="tns:outBuscarPessoa" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="outBuscarPessoa">
+<xs:sequence>
+<xs:element name="listPessoa" minOccurs="0">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="pessoa" type="tns:pessoa" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="status" type="tns:status" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="atualizarPessoa">
+<xs:sequence>
+<xs:element name="inAtualizarPessoa" type="tns:inAtualizarPessoa" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="inAtualizarPessoa">
+<xs:sequence>
+<xs:element name="pessoa" type="tns:pessoa" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="atualizarPessoaResponse">
+<xs:sequence>
+<xs:element name="outAtualizarPessoa" type="tns:outAtualizarPessoa" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="outAtualizarPessoa">
+<xs:sequence>
+<xs:element name="status" type="tns:status" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
